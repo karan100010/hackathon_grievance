@@ -115,7 +115,7 @@ def predict():
        # base64_data = base64.b64encode(ulaw_fragments).decode('utf-8')
         final_dict={
   #  "audio": base64_data,
-    "transcript": text.decode('utf-8'),
+    "transcript": text[0],
     "subjectContentText": "",
     "code": 1,
     "categoryName": predicted_class,
