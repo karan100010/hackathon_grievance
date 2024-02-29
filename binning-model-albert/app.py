@@ -126,7 +126,7 @@ def predict():
   }     
        # resp=requests.post("http://localhost:8080/grievance/post",json=final_dict)
        # print(resp.content)
-        return jsonify(final_dict)
+        return jsonify(final_dict,ensure_ascii=False)
             
 
     except Exception as e:
