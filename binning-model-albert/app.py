@@ -77,7 +77,7 @@ def predict():
         #writ ulaw_fragments to a json file
         file=convert_file(ulaw_fragments)
         prediction = model_id.classify_file(file)
-        if prediction[3]=="en":
+        if prediction[3][0]=="en":
             text=asr_model_en.transcribe([file])
             try:
                 # Tokenize and convert to tensor
