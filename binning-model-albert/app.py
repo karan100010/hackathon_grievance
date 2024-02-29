@@ -80,7 +80,7 @@ def predict():
             text=asr_model_en.transcribe([file])
             try:
                 # Tokenize and convert to tensor
-                inputs = tokenizer(text, return_tensors="pt")
+                inputs = tokenizer(text[0], return_tensors="pt")
 
                 # Make inference
                 with torch.no_grad():
@@ -96,10 +96,10 @@ def predict():
 
         else:
             text=asr_model_hi.transcribe([file])
-            translated_text = nmt_model.translate(text)
+            translated_text = nmt_model.translate([text[0]])
             try:
                 # Tokenize and convert to tensor
-                inputs = tokenizer(translated_text, return_tensors="pt")
+                inputs = tokenizer(translated_text[0], return_tensors="pt")
 
                 # Make inference
                 with torch.no_grad():
