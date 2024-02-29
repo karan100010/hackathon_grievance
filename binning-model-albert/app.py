@@ -45,12 +45,12 @@ def convert_file(file):
 
 # Load the saved model
 nmt_model = nemo_nlp.models.machine_translation.MTEncDecModel.from_pretrained(model_name="nmt_hi_en_transformer12x2")
-#asr_model = nemo_asr.models.EncDecCTCModelBPE.from_pretrained(model_name="stt_hi_conformer_ctc_medium")
+asr_model_hi = nemo_asr.models.EncDecCTCModelBPE.from_pretrained(model_name="stt_hi_conformer_ctc_medium")
 model_path = "./model_2"
 model_bin = AlbertForSequenceClassification.from_pretrained(model_path)
 model_id = EncoderClassifier.from_hparams(source='model/epaca/1988/save/CKPT+2024-02-15+14-26-50+00')
-#asr_model = nemo_asr.models.EncDecCTCModelBPE.from_pretrained(model_name="stt_en_conformer_ctc_medium")
-asr_model = nemo_asr.models.EncDecCTCModelBPE.from_pretrained(model_name="stt_hi_conformer_ctc_large")
+asr_model_en = nemo_asr.models.EncDecCTCModelBPE.from_pretrained(model_name="stt_en_conformer_ctc_medium")
+
 
 
 # Load the tokenizer
@@ -79,7 +79,7 @@ def predict():
         file=convert_file(ulaw_fragments)
         prediction = model_id.classify_file(file)
         if prediction[3][0]=="en":
-            text=asr_model.transcribe([file])
+            text=asr_model_en.transcribe([file])
             try:
                 # Tokenize and convert to tensor
                 inputs = tokenizer(text[0], return_tensors="pt")
@@ -97,7 +97,7 @@ def predict():
                 return jsonify({"error": str(e)})
 
         else:
-            text=asr_model.transcribe([file])
+            text=asr_model_hi.transcribe([file])
             translated_text = nmt_model.translate([text[0]])
             try:
                 # Tokenize and convert to tensor
