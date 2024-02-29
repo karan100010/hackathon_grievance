@@ -58,7 +58,7 @@ with open("labels.txt", "r") as f:
     for line in f:
         label_classes.append(line.replace("\n", ""))
 
-c2l = ClassLabel(num_classes=3, names=label_classes)
+c2l = ClassLabel(num_classes=1155, names=label_classes)
 
 
 app = Flask(__name__)
