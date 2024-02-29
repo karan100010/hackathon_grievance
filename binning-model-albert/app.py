@@ -124,7 +124,7 @@ def predict():
     "comments": []
 
   }     
-        resp=request.post("http://localhost:8080/grievance/post",json=final_dict)
+        resp=requests.post("http://localhost:8080/grievance/post",json=final_dict)
         print(resp.content)
         return jsonify(final_dict)
             
