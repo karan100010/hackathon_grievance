@@ -112,9 +112,9 @@ def predict():
             except Exception as e:
                 print(e)
                 return jsonify({"error": str(e)})
-        base64_data = base64.b64encode(ulaw_fragments).decode('utf-8')
+       # base64_data = base64.b64encode(ulaw_fragments).decode('utf-8')
         final_dict={
-    "audio": base64_data,
+  #  "audio": base64_data,
     "transcript": text.decode('utf-8'),
     "subjectContentText": "",
     "code": 1,
