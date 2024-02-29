@@ -18,6 +18,7 @@ from speechbrain.utils.checkpoints import Checkpointer
 import os
 from flask import Flask, request, jsonify
 import random
+import base64
 # from classifier import EncoderClassifier
 
 # model = EncoderClassifier.from_hparams(source="speechbrain/lang-id-voxlingua107-ecapa", savedir="pretrained_models/lang-id-voxlingua107-ecapa")
