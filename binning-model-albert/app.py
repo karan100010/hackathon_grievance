@@ -47,7 +47,7 @@ nmt_model = nemo_nlp.models.machine_translation.MTEncDecModel.from_pretrained(mo
 asr_model_hi = nemo_asr.models.EncDecCTCModelBPE.from_pretrained(model_name="stt_hi_conformer_ctc_medium")
 model_path = "./model_2"
 model_bin = AlbertForSequenceClassification.from_pretrained(model_path)
-model_id = EncoderClassifier.from_hparams(source=' model/epaca/1988/save/CKPT+2024-02-15+14-26-50+00-20240221T062742Z-001/')
+model_id = EncoderClassifier.from_hparams(source='model/epaca/1988/save/CKPT+2024-02-15+14-26-50+00')
 asr_model_en = nemo_asr.models.EncDecCTCModelBPE.from_pretrained(model_name="stt_en_conformer_ctc_medium")
 
 
