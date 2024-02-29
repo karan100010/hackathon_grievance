@@ -118,7 +118,7 @@ def predict():
     "transcript": text[0],
     "subjectContentText": "",
     "code": 1,
-    "categoryName": predicted_class,
+    "categoryName": c2l.int2str(predicted_class),
     "label": "",
     "status": "",
     "comments": []
