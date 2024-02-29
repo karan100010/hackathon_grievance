@@ -66,7 +66,6 @@ c2l = ClassLabel(num_classes=1155, names=label_classes)
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -79,7 +78,7 @@ def predict():
         file=convert_file(ulaw_fragments)
         prediction = model_id.classify_file(file)
         if prediction[3][0]=="en":
-            text=asr_model_en.transcribe([file])
+            text=asr_model_hi.transcribe([file])
             try:
                 # Tokenize and convert to tensor
                 inputs = tokenizer(text[0], return_tensors="pt")
@@ -123,7 +122,7 @@ def predict():
     "categoryName": c2l.int2str(predicted_class),
     "label": "",
     "status": "",
-    "predictedLanguage": prediction[3],
+    "predictedLanguage": "hi",#prediction[3][0],
     "comments": []
 
   }     
