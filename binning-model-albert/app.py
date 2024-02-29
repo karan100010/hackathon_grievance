@@ -63,6 +63,7 @@ c2l = ClassLabel(num_classes=1155, names=label_classes)
 
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 
 @app.route('/predict', methods=['POST'])
@@ -115,7 +116,7 @@ def predict():
        # base64_data = base64.b64encode(ulaw_fragments).decode('utf-8')
         final_dict={
   #  "audio": base64_data,
-    "transcript": text[0].encode('utf-8'),
+    "transcript": text[0],
     "subjectContentText": "",
     "code": 1,
     "categoryName": c2l.int2str(predicted_class),
@@ -127,7 +128,7 @@ def predict():
   }     
        # resp=requests.post("http://localhost:8080/grievance/post",json=final_dict)
        # print(resp.content)
-        return json.dumps(final_dict,ensure_ascii=False)
+        return jsonify(final_dict,ensure_ascii=False)
             
 
     except Exception as e:
