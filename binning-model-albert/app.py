@@ -121,6 +121,7 @@ def predict():
     "categoryName": c2l.int2str(predicted_class),
     "label": "",
     "status": "",
+    "predictedLanguage": prediction[3],
     "comments": []
 
   }     
