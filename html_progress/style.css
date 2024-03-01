@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(71, 78, 93, 1);
+  font-family: Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column; /* Adjust this to stack items */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 20px; /* Add some padding */
+}
+
+.timeline-box {
+  width: 90%;
+  background-color: #f1f1f1;
+  border-radius: 6px;
+  padding: 20px;
+  color: rgba(71, 78, 93, 1);
+}
+
+.timeline {
+  display: flex;
+  position: relative;
+  padding: 20px 0;
+}
+
+.event {
+  flex-grow: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 20px;
+}
+
+.event-content::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 4px solid #bbb; /* Default grey color */
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+/* Change circle color when the milestone is passed */
+.event.passed .event-content::before {
+  border-color: #09cd0f; /* Change to indicate the milestone is reached */
+}
+
+.event::after {
+  content: "";
+  position: absolute;
+  width: 100% !important;
+  height: 6px;
+  background-color: #ddd;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.event:first-child::after {
+  width: 50%;
+  left: 75%;
+}
+
+.event:last-child::after {
+  width: 50%;
+}
+
+.event.passed::after {
+  background-color: #09cd0f;
+}
+
+.event h2 {
+  font-weight: 400;
+  color: rgba(71, 78, 93, 0.65);
+}
+.event.passed h2 {
+  font-weight: 700;
+  color: rgba(71, 78, 93, 1);
+}
+
+.event-content {
+  padding: 10px;
+  /* background-color: white; */
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  border-radius: 6px;
+}
+
+.event-content h2 {
+  font-size: 20px;
+  margin: 0;
+  padding-top: 100px;
+}
+
+@media screen and (max-width: 600px) {
+  .timeline {
+    flex-direction: column;
+  }
+
+  .event::after {
+    height: 50%;
+    width: 6px;
+    top: 75%;
+    left: 50%;
+    transform: translateY(-50%);
+  }
+
+  .event:first-child::after,
+  .event:last-child::after {
+    height: 25%;
+  }
+}
+
+.grievance-id {
+  display: flex;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
