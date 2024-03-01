@@ -78,7 +78,7 @@ def predict():
         file=convert_file(ulaw_fragments)
         prediction = model_id.classify_file(file)
         if prediction[3][0]=="en":
-            text=asr_model_hi.transcribe([file])
+            text=asr_model_en.transcribe([file])
             try:
                 # Tokenize and convert to tensor
                 inputs = tokenizer(text[0], return_tensors="pt")
@@ -122,7 +122,7 @@ def predict():
     "categoryName": c2l.int2str(predicted_class),
     "label": "",
     "status": "",
-    "predictedLanguage": "hi",#prediction[3][0],
+    "predictedLanguage": prediction[3][0],
     "comments": []
 
   }     
